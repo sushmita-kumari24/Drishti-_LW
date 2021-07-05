@@ -1,0 +1,28 @@
+<script>
+	function lw() {
+		var rollnum=document.getElementById("rollnumber").value
+		var sub=document.getElementById('subjects').value;
+		var xhr=new XMLHttpRequest();
+		xhr.open("GET", "http://192.168.43.86/cgi-bin/server.py?roll="+rollnum+"&subj="+sub, true);
+		xhr.send();
+		xhr.onload=function(){
+			var output=xhr.responseText;
+			document.getElementById("out").innerHTML=output;
+		}
+	}
+</script>
+
+<label for="rollnumber">Roll Number</label>
+	<input type="text" id="rollnumber" name="rollnumber">
+	<br>
+<label for="subjects">Choose The Subject:</label>
+<select id="subjects">
+  <option value="Operating System">Operating System</option>
+  <option value="Computer Networks">Computer Networks</option>
+  <option value="Machine Learning">Machine Learning</option>
+  <option value="DBMS">DBMS</option>
+</select> 
+<button onclick="lw()"></button>
+Your Attendance is: <div id="out"> </div>
+
+
